@@ -1,16 +1,43 @@
-export interface Fruit {
-  id: string;
+export type Fruit = {
+  id: number;
   name: string;
-  value: number;
   price: number;
-  image?: string;
-}
+  value: number;
+  image: string;
+};
 
 export const fruits: Fruit[] = [
-  { id: "1", name: "Dragon", value: 2300000, price: 2500000 },
-  { id: "2", name: "Soul", value: 2100000, price: 2300000 },
-  { id: "3", name: "Venom", value: 2500000, price: 2700000 },
-  { id: "4", name: "Shadow", value: 1900000, price: 2100000 },
-  { id: "5", name: "Control", value: 1800000, price: 2000000 },
-  { id: "6", name: "Dough", value: 2000000, price: 2200000 },
+  { id: 1, name: "Spin", price: 10000, value: 10000, image: "/SpinFruit.webp" },
+  { id: 2, name: "Bot", price: 50000, value: 50000, image: "/ChopFruit.webp" },
+  {
+    id: 3,
+    name: "Rubber",
+    price: 12000,
+    value: 12000,
+    image: "/BombFruit.webp",
+  },
+  {
+    id: 4,
+    name: "Mango",
+    price: 20000,
+    value: 20000,
+    image: "/SmokeFruit.webp",
+  },
+  { id: 5, name: "Spin", price: 10000, value: 10000, image: "/SpinFruit.webp" },
+  { id: 6, name: "Bot", price: 50000, value: 50000, image: "/ChopFruit.webp" },
+  {
+    id: 7,
+    name: "Rubber",
+    price: 12000,
+    value: 12000,
+    image: "/BombFruit.webp",
+  },
+  {
+    id: 8,
+    name: "Mango",
+    price: 20000,
+    value: 20000,
+    image: "/SmokeFruit.webp",
+  },
+  { id: 9, name: "Spin", price: 10000, value: 10000, image: "/SpinFruit.webp" },
 ];

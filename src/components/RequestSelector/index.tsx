@@ -1,13 +1,6 @@
 "use client";
 import { useState } from "react";
-import {
-  ArrowRightLeft,
-  CirclePlus,
-  DollarSign,
-  Plus,
-  Quote,
-  X,
-} from "lucide-react";
+import { ArrowRightLeft, CirclePlus, DollarSign, Quote, X } from "lucide-react";
 import { useAtom } from "jotai";
 import { selectedRequestedFruitsAtom } from "@/lib/store";
 import { Card } from "@/components/ui/card";
@@ -19,23 +12,9 @@ import {
 } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "../ui/input";
+import { Fruit, fruits } from "@/lib/fruits";
 
 // Fruit Data
-type Fruit = {
-  id: number;
-  name: string;
-  price: number;
-  value: number;
-  image: string;
-};
-
-const fruits: Fruit[] = [
-  { id: 1, name: "Spin", price: 10000, value: 10000, image: "/apple.jpg" },
-  { id: 2, name: "Bot", price: 50000, value: 50000, image: "/apple.jpg" },
-  { id: 3, name: "Rubber", price: 12000, value: 12000, image: "/apple.jpg" },
-  { id: 4, name: "Mango", price: 20000, value: 20000, image: "/apple.jpg" },
-  { id: 5, name: "Pine", price: 30000, value: 30000, image: "/apple.jpg" },
-];
 
 export default function RequestSelector() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -129,7 +108,7 @@ export default function RequestSelector() {
                     );
                   })}
                 </div>
-                <div className="hidden lg:flex items-center justify-center px-4 absolute -left-[42px]">
+                <div className="hidden lg:flex items-center justify-center px-4 absolute -right-[42px]">
                   <ArrowRightLeft className=" text-white" />
                 </div>
               </div>
@@ -145,8 +124,12 @@ export default function RequestSelector() {
               Add Items to calculate Requested value
             </DialogTitle>
           </DialogHeader>
+          <div className="w-full flex flex-col items-center justify-center">
+            <div>Value Difference:</div>
+            <div>Max:</div>
+          </div>
 
-          <div className="px-4 ">
+          <div className="px-4 pt-5">
             <div className="relative w-full flex justify-center items-center ">
               <Input
                 type="text"

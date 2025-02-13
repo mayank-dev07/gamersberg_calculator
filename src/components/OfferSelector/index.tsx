@@ -19,23 +19,9 @@ import {
 } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "../ui/input";
+import { Fruit, fruits } from "@/lib/fruits";
 
 // Fruit Data
-type Fruit = {
-  id: number;
-  name: string;
-  price: number;
-  value: number;
-  image: string;
-};
-
-const fruits: Fruit[] = [
-  { id: 1, name: "Spin", price: 10000, value: 10000, image: "/apple.jpg" },
-  { id: 2, name: "Bot", price: 50000, value: 50000, image: "/apple.jpg" },
-  { id: 3, name: "Rubber", price: 12000, value: 12000, image: "/apple.jpg" },
-  { id: 4, name: "Mango", price: 20000, value: 20000, image: "/apple.jpg" },
-  { id: 5, name: "Pine", price: 30000, value: 30000, image: "/apple.jpg" },
-];
 
 export default function OfferSelector() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -143,8 +129,12 @@ export default function OfferSelector() {
               Add Items to calculate offer value
             </DialogTitle>
           </DialogHeader>
+          <div className="w-full flex flex-col items-center justify-center">
+            <div>Value Difference:</div>
+            <div>Max:</div>
+          </div>
 
-          <div className="px-4 ">
+          <div className="px-4 pt-5">
             <div className="relative w-full flex justify-center items-center ">
               <Input
                 type="text"
