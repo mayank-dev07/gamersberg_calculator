@@ -59,8 +59,8 @@ export default function ResultDisplay() {
       <div className="container ">
         <div className="flex justify-between items-stretch gap-8">
           <div className="space-y-32 flex flex-col">
-            <ResultButton children={`Price: ${totalOfferPrice}`} />
-            <ResultButton children={`Price: ${totalOfferValue}`} />
+            <ResultButton>Price: ${totalOfferPrice}</ResultButton>
+            <ResultButton>Price: ${totalOfferValue}</ResultButton>
           </div>
 
           <div className="space-y-6 flex flex-col items-center justify-center">
@@ -159,8 +159,8 @@ export default function ResultDisplay() {
           </div>
 
           <div className="space-y-32 flex flex-col">
-            <ResultButton children={`Price: ${totalRequestedPrice}`} />
-            <ResultButton children={`Price: ${totalRequestedValue}`} />
+            <ResultButton>Price: ${totalRequestedPrice}</ResultButton>
+            <ResultButton>Price: ${totalRequestedValue}</ResultButton>
           </div>
         </div>
       </div>

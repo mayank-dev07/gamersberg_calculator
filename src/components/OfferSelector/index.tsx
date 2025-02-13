@@ -1,13 +1,6 @@
 "use client";
 import { useState } from "react";
-import {
-  ArrowRightLeft,
-  CirclePlus,
-  DollarSign,
-  Plus,
-  Quote,
-  X,
-} from "lucide-react";
+import { ArrowRightLeft, CirclePlus, DollarSign, Quote, X } from "lucide-react";
 import { useAtom } from "jotai";
 import { selectedOfferFruitsAtom } from "@/lib/store";
 import { Card } from "@/components/ui/card";
