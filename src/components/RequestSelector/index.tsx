@@ -108,7 +108,7 @@ export default function RequestSelector() {
                     );
                   })}
                 </div>
-                <div className="hidden lg:flex items-center justify-center px-4 absolute -right-[42px]">
+                <div className="hidden lg:flex items-center justify-center px-4 absolute -left-[42px]">
                   <ArrowRightLeft className=" text-white" />
                 </div>
               </div>
