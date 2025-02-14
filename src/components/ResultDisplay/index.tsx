@@ -51,8 +51,8 @@ export default function ResultDisplay() {
   const progressStyle = calculateProgress();
 
   return (
-    <div className="min-h-[200px] bg-[#0A061D] text-white ">
-      <div className="container ">
+    <div className="min-h-[200px] bg-[#0A061D] text-white">
+      <div className="container">
         <div className="flex justify-between items-stretch gap-8">
           <div className="space-y-32 flex flex-col">
             <ResultButton>Price: ${totalOfferPrice}</ResultButton>
@@ -103,49 +103,102 @@ export default function ResultDisplay() {
               </DropdownMenu>
             </div>
 
-            <div className="w-full max-w-[200px] space-y-2 relative">
-              <div
-                className="absolute top-[-15px] left-1/2 transform -translate-x-1/2 z-10"
-                style={{
-                  left: `calc(${progressStyle.left} + (${progressStyle.width} / 2))`,
-                }}
-              >
-                <MapPin className="text-white" size={20} />
-              </div>
+            {totalOfferValue == 0 && totalRequestedValue == 0 ? (
+              <>
+                <div className="w-full max-w-[200px] space-y-2 relative">
+                  <div
+                    className="absolute top-[-15px] transform -translate-x-1/2 z-10"
+                    style={{
+                      left: `calc(50% )`,
+                    }}
+                  >
+                    <MapPin className="text-white" size={20} />
+                  </div>
 
-              <div className="relative h-2 bg-[#2D2B5A] rounded-full overflow-hidden">
-                <div
-                  className="absolute top-0 w-0.5 h-full bg-white/50"
-                  style={{ transform: "translateX(-100%)" }}
-                />
+                  <div className="relative h-2 bg-[#2D2B5A] rounded-full overflow-hidden">
+                    <div
+                      className="absolute top-0 w-0.5 h-full bg-white/50"
+                      style={{ left: "50%" }}
+                    />
 
-                <div
-                  className={`absolute h-full transition-all duration-300 ${
-                    isFair ? "bg-green-500" : "bg-red-500"
-                  }`}
-                  style={{
-                    width: progressStyle.width,
-                    left: progressStyle.left,
-                  }}
-                />
-              </div>
+                    <div
+                      className={`absolute h-full transition-all duration-300 ${
+                        isFair ? "bg-green-500" : "bg-red-500"
+                      }`}
+                      style={{
+                        width: progressStyle.width,
+                        left: isRightProgress
+                          ? "50%"
+                          : `calc(50% - ${progressStyle.width})`,
+                      }}
+                    />
+                  </div>
 
-              {totalOfferValue !== 0 && totalRequestedValue !== 0 && (
-                <div
-                  className={`text-center ${
-                    isFair ? "text-green-500" : "text-red-500"
-                  }`}
-                >
-                  {isFair
-                    ? `${clampedValueDifference.toFixed(2)}% fair`
-                    : "Overpaid, not tradeable on Blox Fruits"}
+                  {totalOfferValue !== 0 && totalRequestedValue !== 0 && (
+                    <div
+                      className={`text-center ${
+                        isFair ? "text-green-500" : "text-red-500"
+                      }`}
+                    >
+                      {isFair
+                        ? `${clampedValueDifference.toFixed(2)}% fair`
+                        : "Overpaid, not tradeable on Blox Fruits"}
+                    </div>
+                  )}
                 </div>
-              )}
-
-              {(totalOfferValue == 0 || totalRequestedValue == 0) && (
                 <div className="text-center text-lg">No items selected</div>
-              )}
-            </div>
+              </>
+            ) : (
+              <>
+                <div className="w-full max-w-[200px] space-y-2 relative">
+                  <div
+                    className="absolute top-[-15px] transform -translate-x-1/2 z-10"
+                    style={{
+                      left: isRightProgress
+                        ? `calc(50% + ${progressStyle.width})`
+                        : `calc(50% - ${progressStyle.width})`,
+                    }}
+                  >
+                    <MapPin className="text-white" size={20} />
+                  </div>
+
+                  <div className="relative h-2 bg-[#2D2B5A] rounded-full overflow-hidden">
+                    <div
+                      className="absolute top-0 w-0.5 h-full bg-white/50"
+                      style={{ left: "50%" }}
+                    />
+
+                    <div
+                      className={`absolute h-full transition-all duration-300 ${
+                        isFair ? "bg-green-500" : "bg-red-500"
+                      }`}
+                      style={{
+                        width: progressStyle.width,
+                        left: isRightProgress
+                          ? "50%"
+                          : `calc(50% - ${progressStyle.width})`,
+                      }}
+                    />
+                  </div>
+
+                  {totalOfferValue !== 0 && totalRequestedValue !== 0 && (
+                    <div
+                      className={`text-center ${
+                        isFair ? "text-green-500" : "text-red-500"
+                      }`}
+                    >
+                      {isFair
+                        ? `${clampedValueDifference.toFixed(2)}% fair`
+                        : "Overpaid, not tradeable on Blox Fruits"}
+                    </div>
+                  )}
+
+                  {(totalOfferValue == 0 || totalRequestedValue == 0) && (
+                    <div className="text-center text-lg">No items selected</div>
+                  )}
+                </div>
+              </>
+            )}
           </div>
 
           <div className="space-y-32 flex flex-col">
