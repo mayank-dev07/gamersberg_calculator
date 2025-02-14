@@ -159,13 +159,15 @@ export default function OfferSelector() {
 
           <div className="px-4 pt-5">
             <div className="relative w-full flex justify-center items-center ">
-              <Input
-                type="text"
-                placeholder="Search"
-                className="rounded-xl max-w-lg text-black bg-white border-[1px] border-black outline-offset-2 outline-whitex focus:outline-2  px-3 py-2"
-                value={searchTerm}
-                onChange={(e: any) => setSearchTerm(e.target.value)}
-              />
+              <div className="w-96 p-[2px] bg-white rounded-xl flex">
+                <Input
+                  type="text"
+                  placeholder="Search"
+                  className="rounded-xl max-w-3xl text-black bg-white border-0 border-black ring-0 focus:border-[2px] px-3 py-2"
+                  value={searchTerm}
+                  onChange={(e: any) => setSearchTerm(e.target.value)}
+                />
+              </div>
             </div>
           </div>
 
