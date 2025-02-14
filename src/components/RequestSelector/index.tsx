@@ -2,7 +2,11 @@
 import { useState } from "react";
 import { ArrowRightLeft, CirclePlus, DollarSign, Quote, X } from "lucide-react";
 import { useAtom } from "jotai";
-import { selectedRequestedFruitsAtom } from "@/lib/store";
+import {
+  selectedRequestedFruitsAtom,
+  totalOfferValueAtom,
+  totalRequestedValueAtom,
+} from "@/lib/store";
 import { Card } from "@/components/ui/card";
 import {
   Dialog,
@@ -21,6 +25,21 @@ export default function RequestSelector() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedFruits, setSelectedFruits] = useAtom(
     selectedRequestedFruitsAtom
+  );
+  const [totalOfferValue] = useAtom(totalOfferValueAtom);
+  const [totalRequestedValue] = useAtom(totalRequestedValueAtom);
+
+  const valueDifference =
+    ((totalRequestedValue - totalOfferValue) /
+      Math.min(totalOfferValue, totalRequestedValue)) *
+    100;
+
+  const Max = 40;
+  const maxDifference = 100;
+
+  const clampedValueDifference = Math.min(
+    Math.abs(valueDifference),
+    maxDifference
   );
 
   const handleAddFruit = (fruit: Fruit) => {
@@ -124,9 +143,20 @@ export default function RequestSelector() {
               Add Items to calculate Requested value
             </DialogTitle>
           </DialogHeader>
-          <div className="w-full flex flex-col items-center justify-center">
-            <div>Value Difference:</div>
-            <div>Max:</div>
+          <div className="text-center space-y-1 w-full">
+            <div className="flex items-center gap-2 justify-center text-gray-400 text-xs md:text-sm">
+              <span>Value Difference:</span>
+            </div>
+            {totalOfferValue !== 0 && totalRequestedValue !== 0 && (
+              <>
+                <div className="text-red-600 text-xs md:text-sm">
+                  {totalOfferValue === totalRequestedValue
+                    ? "0.00%"
+                    : `${clampedValueDifference.toFixed(2)}%`}
+                </div>
+                <div className="text-sm text-gray-400">Max: {Max}%</div>
+              </>
+            )}
           </div>
 
           <div className="px-4 pt-5">
