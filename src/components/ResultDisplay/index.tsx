@@ -107,7 +107,7 @@ export default function ResultDisplay() {
 
           <div className="flex justify-between items-start gap-2 md:gap-8 w-full ">
             <div className="w-full">
-              <ResultButton>Price: ${totalRequestedPrice}</ResultButton>
+              <ResultButton>Value: ${totalOfferValue}</ResultButton>
             </div>
             <div className="w-full max-w-xs space-y-2 relative">
               <div
